@@ -7,7 +7,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   void answerQuestion() {
-    print("Option pressed");
+    print("Option1 pressed");
   }
 
   @override
@@ -30,9 +30,15 @@ class MyApp extends StatelessWidget {
             ),
             RaisedButton(
               child: Text("Answer2"),
-              onPressed: answerQuestion,
+              onPressed: () => print("Opton 2 Pressed"),
             ),
-            RaisedButton(child: Text("Answer3"), onPressed: answerQuestion),
+            RaisedButton(
+                child: Text("Answer3"),
+                onPressed: () {
+                  //.............
+                  print("this is last option");
+                  print("Option 3 pressed");
+                }),
           ],
         ),
       ),
