@@ -39,7 +39,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Testing Year 2020'),
+          title: Text(
+            'Testing Year 2020',
+          ),
+          backgroundColor: Colors.red,
         ),
         body: Column(
           children: [
