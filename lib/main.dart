@@ -8,13 +8,29 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favourte color?',
+      'What\'s your favourte animal?',
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('Testing Year 2020'),
         ),
-        body: Text(
-            "Testing Year 2020Testing Year 2020Testing Year 2020Testing Year 2020Testing Year 2020Testing Year 2020vTesting Year 2020"),
+        body: Column(
+          children: [
+            Text("Questions"),
+            RaisedButton(
+              child: Text("Answer1"),
+              onPressed: null,
+            ),
+            RaisedButton(
+              child: Text("Answer2"),
+              onPressed: null,
+            ),
+            RaisedButton(child: Text("Answer3"), onPressed: null),
+          ],
+        ),
       ),
     );
   }
