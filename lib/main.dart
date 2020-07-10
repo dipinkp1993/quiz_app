@@ -6,16 +6,25 @@ void main() {
 //void main()=>runApp(MyApp()); The alernative syntax for function with single expression
 
 class MyApp extends StatelessWidget {
+  var questionIndex = 0;
   void answerQuestion() {
-    print("Option1 pressed");
+    questionIndex = questionIndex + 1;
+    print(questionIndex);
   }
+
+  var questions = [
+    'What\'s your favourte color?',
+    'What\'s your favourte animal?',
+    'What\'s your favourte Player?',
+    'What\'s your favourte Flower?',
+    'What\'s your favourte Birds?',
+    'What\'s your favourte Actor?',
+    'What\'s your favourte Song?',
+    'What\'s your favourte Dacer?',
+  ];
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      'What\'s your favourte color?',
-      'What\'s your favourte animal?',
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -23,22 +32,19 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text("Questions"),
+            Text(questions[questionIndex]),
             RaisedButton(
               child: Text("Answer1"),
               onPressed: answerQuestion,
             ),
             RaisedButton(
               child: Text("Answer2"),
-              onPressed: () => print("Opton 2 Pressed"),
+              onPressed: answerQuestion,
             ),
             RaisedButton(
-                child: Text("Answer3"),
-                onPressed: () {
-                  //.............
-                  print("this is last option");
-                  print("Option 3 pressed");
-                }),
+              child: Text("Answer3"),
+              onPressed: answerQuestion,
+            )
           ],
         ),
       ),
