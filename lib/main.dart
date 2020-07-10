@@ -6,6 +6,10 @@ void main() {
 //void main()=>runApp(MyApp()); The alernative syntax for function with single expression
 
 class MyApp extends StatelessWidget {
+  void answerQuestion() {
+    print("Option pressed");
+  }
+
   @override
   Widget build(BuildContext context) {
     var questions = [
@@ -22,13 +26,13 @@ class MyApp extends StatelessWidget {
             Text("Questions"),
             RaisedButton(
               child: Text("Answer1"),
-              onPressed: null,
+              onPressed: answerQuestion,
             ),
             RaisedButton(
               child: Text("Answer2"),
-              onPressed: null,
+              onPressed: answerQuestion,
             ),
-            RaisedButton(child: Text("Answer3"), onPressed: null),
+            RaisedButton(child: Text("Answer3"), onPressed: answerQuestion),
           ],
         ),
       ),
