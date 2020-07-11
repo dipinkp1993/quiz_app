@@ -25,14 +25,30 @@ class _MyAppState extends State<MyApp> {
   }
 
   var questions = [
-    'What\'s your favourte color?',
-    'What\'s your favourte animal?',
-    'What\'s your favourte Player?',
-    'What\'s your favourte Flower?',
-    'What\'s your favourte Birds?',
-    'What\'s your favourte Actor?',
-    'What\'s your favourte Song?',
-    'What\'s your favourte Dacer?',
+    {
+      'questionText': 'What\'s your favourte color?',
+      'answers': ['Red', 'Blue', 'Green', 'Orange'],
+    },
+    {
+      'questionText': 'What\'s your favourte animal?',
+      'answers': ['Dog', 'Cat', 'Goat', 'Camel'],
+    },
+    {
+      'questionText': 'What\'s your favourte Flower?',
+      'answers': ['Rose', 'Lotus', 'Jasmine', 'Daliya'],
+    },
+    {
+      'questionText': 'Who\'s your favourte Player?',
+      'answers': ['Messi', 'Ronaldo', 'Neymer', 'Mbape'],
+    },
+    {
+      'questionText': 'What\'s your favourte Bird?',
+      'answers': ['Peacock', 'Parrot', 'Eagle', 'Chicken'],
+    },
+    {
+      'questionText': 'What\'s your favourte animal?',
+      'answers': ['Dog', 'Cat', 'Goat', 'Camel'],
+    },
   ];
 
   @override
@@ -47,11 +63,12 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(
-                questions[_questionIndex]), //question widget is custom widget
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion)
+            Question(questions[_questionIndex]
+                ['questionText']), //question widget is custom widget
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
+            }).toList(),
           ],
         ),
         bottomNavigationBar: BottomAppBar(
