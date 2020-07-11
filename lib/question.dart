@@ -11,9 +11,9 @@ class Question extends StatelessWidget {
       child: Text(
         questionText,
         style: TextStyle(
-          fontSize: 28,
-          color: Colors.blue,
-        ),
+            fontSize: 28,
+            color: Colors.blue,
+            textBaseline: TextBaseline.ideographic),
         textAlign: TextAlign.center,
       ),
     );

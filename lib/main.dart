@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,19 +49,22 @@ class _MyAppState extends State<MyApp> {
           children: [
             Question(
                 questions[_questionIndex]), //question widget is custom widget
-            RaisedButton(
-              child: Text("Answer1"),
-              onPressed: _answerQuestion,
-            ),
-            RaisedButton(
-              child: Text("Answer2"),
-              onPressed: _answerQuestion,
-            ),
-            RaisedButton(
-              child: Text("Answer3"),
-              onPressed: _answerQuestion,
-            )
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion)
           ],
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.red,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.menu),
+              ),
+            ],
+          ),
         ),
       ),
     );
