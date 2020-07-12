@@ -22,9 +22,14 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+    if (_questionIndex < questions.length) {
+      print("We have More Questions");
+    } else {
+      print("No more questions");
+    }
   }
 
-  var questions = [
+  final questions = const [
     {
       'questionText': 'What\'s your favourte color?',
       'answers': ['Red', 'Blue', 'Green', 'Orange'],
@@ -61,16 +66,23 @@ class _MyAppState extends State<MyApp> {
           ),
           backgroundColor: Colors.red,
         ),
-        body: Column(
-          children: [
-            Question(questions[_questionIndex]
-                ['questionText']), //question widget is custom widget
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              return Answer(_answerQuestion, answer);
-            }).toList(),
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ? Column(
+                children: [
+                  Question(questions[_questionIndex]
+                      ['questionText']), //question widget is custom widget
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(_answerQuestion, answer);
+                  }).toList(),
+                ],
+              )
+            : Center(
+                child: Text(
+                  'You Have Completed The Quiz',
+                  style: TextStyle(color: Colors.red, fontSize: 28),
+                ),
+              ),
         bottomNavigationBar: BottomAppBar(
           color: Colors.red,
           child: Row(
