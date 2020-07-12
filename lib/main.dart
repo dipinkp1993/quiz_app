@@ -17,7 +17,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  void _answerQuestion() {
+  var _totalScore = 0;
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -31,28 +33,59 @@ class _MyAppState extends State<MyApp> {
 
   final _questions = const [
     {
-      'questionText': 'What\'s your favourte color?',
-      'answers': ['Red', 'Blue', 'Green', 'Orange'],
+      'questionText': 'Do You feel sad?',
+      'answers': [
+        {'text': 'Most of the time', 'score': 10},
+        {'text': 'Sometimes', 'score': 6},
+        {'text': 'Rarely', 'score': 4},
+        {'text': 'Almost Never', 'score': 2}
+      ],
     },
     {
-      'questionText': 'What\'s your favourte animal?',
-      'answers': ['Dog', 'Cat', 'Goat', 'Camel'],
+      'questionText': 'Do You feel restlessness?',
+      'answers': [
+        {'text': 'Most of the time', 'score': 10},
+        {'text': 'Sometimes', 'score': 6},
+        {'text': 'Rarely', 'score': 4},
+        {'text': 'Almost Never', 'score': 2}
+      ],
     },
     {
-      'questionText': 'What\'s your favourte Flower?',
-      'answers': ['Rose', 'Lotus', 'Jasmine', 'Daliya'],
+      'questionText': 'Do You feel extreme tiredness?',
+      'answers': [
+        {'text': 'Most of the time', 'score': 10},
+        {'text': 'Sometimes', 'score': 6},
+        {'text': 'Rarely', 'score': 4},
+        {'text': 'Almost Never', 'score': 2}
+      ],
     },
     {
-      'questionText': 'Who\'s your favourte Player?',
-      'answers': ['Messi', 'Ronaldo', 'Neymer', 'Mbape'],
+      'questionText':
+          'Do You feel everything lost when expections are not met?',
+      'answers': [
+        {'text': 'Most of the time', 'score': 10},
+        {'text': 'Sometimes', 'score': 6},
+        {'text': 'Rarely', 'score': 4},
+        {'text': 'Almost Never', 'score': 2}
+      ],
     },
     {
-      'questionText': 'What\'s your favourte Bird?',
-      'answers': ['Peacock', 'Parrot', 'Eagle', 'Chicken'],
+      'questionText': 'Do You think about death?',
+      'answers': [
+        {'text': 'Most of the time', 'score': 10},
+        {'text': 'Sometimes', 'score': 6},
+        {'text': 'Rarely', 'score': 4},
+        {'text': 'Almost Never', 'score': 2}
+      ],
     },
     {
-      'questionText': 'What\'s your favourte animal?',
-      'answers': ['Dog', 'Cat', 'Goat', 'Camel'],
+      'questionText': 'Do you feel so guilty?',
+      'answers': [
+        {'text': 'Most of the time', 'score': 10},
+        {'text': 'Sometimes', 'score': 6},
+        {'text': 'Rarely', 'score': 4},
+        {'text': 'Almost Never', 'score': 2}
+      ],
     },
   ];
 
@@ -62,7 +95,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Testing Year 2020',
+            'Depression Test',
           ),
           backgroundColor: Colors.red,
         ),
@@ -71,7 +104,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex)
-            : Result(),
+            : Result(_totalScore),
         bottomNavigationBar: BottomAppBar(
           color: Colors.red,
           child: Row(
