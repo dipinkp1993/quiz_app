@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import './result.dart';
+import './quiz.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,14 +22,14 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
-    if (_questionIndex < questions.length) {
+    if (_questionIndex < _questions.length) {
       print("We have More Questions");
     } else {
       print("No more questions");
     }
   }
 
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'What\'s your favourte color?',
       'answers': ['Red', 'Blue', 'Green', 'Orange'],
@@ -66,23 +66,12 @@ class _MyAppState extends State<MyApp> {
           ),
           backgroundColor: Colors.red,
         ),
-        body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(questions[_questionIndex]
-                      ['questionText']), //question widget is custom widget
-                  ...(questions[_questionIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  }).toList(),
-                ],
-              )
-            : Center(
-                child: Text(
-                  'You Have Completed The Quiz',
-                  style: TextStyle(color: Colors.red, fontSize: 28),
-                ),
-              ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                questions: _questions,
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex)
+            : Result(),
         bottomNavigationBar: BottomAppBar(
           color: Colors.red,
           child: Row(
